@@ -112,4 +112,107 @@ Local Variables:
 ==> Local variable memory allocation happens whenever method is called
 ==> Local variables are stored in Stack area memory
 
+Execution Priority:
+-------------------
+1. Class Variables
+2. main method
 
+Note:
+1. Local variables can not be static in Java
+2. There is no global variables concept in java
+
+
+In Java, Instance variables can be accessed in '2' ways
+1. By using Object
+2. By using ObjectReference
+
+==> Use Object to access an instance variable if it is required only one time
+==> User Object Reference to access an instance variable if it required more than one time
+
+
+In Java, there are '4' to access the class variable
+1. Directly
+2. By using ClassName
+3. By using Object
+4. By using ObjectReference
+	
+	Both Object and ObjectReference are not recommended to use
+	
+==>Access the class Variable directly if it is present in the same class
+==>use classname to access class variable if it is present in different class
+	
+	
+In Java, there is only one way to access the Local variable i.e., Directly
+
+==>Use className to access class variable whenever both class variable and Local variable names are same
+
+
+==> Only one copy of class variables exists for all objects
+==> Separate copy of instance variables exists for every object
+
+public class VarDemo1 {
+    int x=5;//instance variable
+    static int y=10;//class variable
+
+    public static void main(String[] args) {
+        VarDemo1 ob1 = new VarDemo1();
+        VarDemo1 ob2 = new VarDemo1();
+
+        ob1.x = ob1.x+2;
+        ob1.y = ob1.y+2;
+
+        System.out.println(ob1.x);
+        System.out.println(ob1.y);
+        System.out.println(ob2.x);
+        System.out.println(ob2.y);
+    }
+}
+
+
+=====================================================================================
+class Emp{											class Emp{
+	int empNo;											int empNo;
+	float empSalary;									static float empSalary;
+}													}
+
+													empSalary=1000 --> 4 bytes
+Emp ob1 = new Emp();								Emp ob1 = new Emp();
+ob1 --> empNo, empSalary --> 8 bytes				ob1 --> emNo --> 4 bytes
+
+Emp ob2 = new Emp();								Emp ob2 = new Emp();
+ob2 --> empNo, empSalary --> 8 bytes				ob2 --> empNo --> 4 bytes
+
+Emp ob3 = new Emp();								Emp ob3 = new Emp();
+ob3 --> empNo, empSalary --> 8 bytes				ob3 --> empNo --> 4 bytes
+
+----------------------------						---------------------
+----------------------------						---------------------
+----------------------------						---------------------
+
+Emp ob100 = new Emp();								Emp ob100 = new Emp();
+ob100 --> empNo, empSalary --> 8 bytes				ob100 --> empNo --> 4 bytes
+
+800 bytes											400 + 4 bytes --> 404 bytes
+
+
+==> Use the Instance variable, if value is changing for every object
+==> Use the class variable, if value is same for all objects/every object
+==> Use the Local variable, whenever some action is performed
+
+
+Arrays:
+-------
+==> An array is a collection of similar data elements
+
+==> An array index always strts  with '0' and ends with size-1
+
+
+1. Declaration:
+----------------
+	Syntax:
+		DataType arrayRef[] = new DataType[size];
+		
+	Example:
+		int a[] = new int[10];
+		
+		
