@@ -102,3 +102,18 @@ Assignment-5:
     		System.out.println("Failed");
     	}
 ======================================================================================================
+Assignment-6:
+
+Take the array int a[]={7, 12, 15, 17, 9,21};
+1. By using regular for loop --> print sum of all Prime numbers
+
+2. By using advanced for loop --> print sum of all Prime numbers
+   
+3. Write a Test2 class and then define '4' method
+	1. Instance method --> factorial number logic
+	2. class method --> prime number logic
+	3. Instance method --> reverse of a number logic
+	4. class method --> Write the logic of 5 subject student marks
+	
+	Write a class Demo2 --> write the main method here
+	and call all '4' methods of Test2 and then execute it
