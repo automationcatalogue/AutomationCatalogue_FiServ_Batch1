@@ -1110,5 +1110,378 @@ class B extends A{
 	}
 }
 
+Abstraction:
+------------
+==> Providing necessary information and hiding unnecessary information is known as Abstraction
+==> In Java, anstraction can be implemented by using abstract class and interface
 
+abstract class:
+---------------
+==> A class i.e., declared with abstract keyword is known as Abstract class
+==>Abstract class can have only abstract methods (or) only non-abstract methods (or) combination of both abstract and non-abstract methods 
 
+Abstract method:
+----------------
+==> A method which has no body is called as abstract method
+==> Abstract method must be declared with abstract keyword in Java, otherwise compile time error occurs
+
+Non-Abstract (Concrete) method:
+-------------------------------
+==> A method which has body is called as Non-Abstract method
+
+==>If the class contains abstract method, then the class must be declared with abstract keyword, otherwise compile time error occurs.
+
+==>void show(){//Non-abstract method
+	----------
+	---------- 
+	----------
+}
+
+==> abstract void show();//abstract method
+
+==> void show(){}//Null Body method
+-->Null body method is also called as Non-Abstract method
+
+==> 
+abstract class A{
+	void show(){//valid
+		-------
+	}
+	void print(){
+		-------
+	}
+}	
+==>
+abstract class B{
+	void show(); //Invalid, abstract method should have 'abstract' keyword
+	void print();
+
+==>
+abstract class C{
+	abstract void show();//valid
+	abstract void print();
+	
+}	
+
+==>
+class D{
+	void show(){}
+	abstract void print();//Invalid, abstract methods can not be written in regular class
+}
+
+==>
+abstract class E{
+	abstract void show();//valid
+	void print(){}
+}	
+
+==>Abstract class can not be instantiated i.e., object can not be created
+
+==>Abstract class can be Inherited by using 'extends' keyword
+
+==> Whenever abstract class is Inherited, then all abstract methods of an abstract class must be overridden in a sub class	
+		(OR)
+	Subclass must be declared with abstract keyword, otherwise compile time error occurs.
+
+abstract public class Demo {
+    //abstract method
+    abstract void show();
+
+    //Non-abstract method
+   void prime(int x){
+       int count=0;
+       for(int i=1;i<=x;++i){
+           if(x%i==0){
+               ++count;
+           }
+       }
+       if(count==2){
+           System.out.println("Given number "+x+ " is a Prime!!!");
+       }else{
+           System.out.println("Given number "+x+ " is not a Prime!!!");
+       }
+   }
+
+}
+
+public class Test extends Demo{
+    void show(){
+        int a=10, b=20;
+        int c=a+b;
+        System.out.println("Addition of a, b is :"+c);
+    }
+
+    void fact(int x){
+        int fact=1;
+        for(int i=x;i>=1;--i){
+            fact = fact*i;
+        }
+        System.out.println("Factorial of a given number is :"+x);
+    }
+}
+
+public class sample {
+    public static void main(String[] args) {
+
+    }
+}
+
+interface:
+----------
+==> interface is a collection of public static final variables and public abstract methods
+==>In interface all variables are implicitly public static final and all methods are public abstract
+
+==> Every interface itself implicitly abstract
+interface A{						abstract interface A{
+	int x=5;							public static final int x=5;
+	void show();			<===>		public abstract void show():
+}									}
+
+==> Interface can not be instantiated ie., so we can not create an object to an interface
+==> Interface can be inherited into a class by using 'implements' keyword
+
+==>Whenever interface is inherited into a class all methods of an interface must be overridden in a sub class
+	(OR)
+	Subclass must be declared with abstract keyword, otherwise compile time error occurs
+	
+public interface Demo1 {
+
+    int x=10;    //public static final int x=10;
+    void show(); //public abstract void show();
+}
+
+public class Test1 implements Demo1{
+
+    int y=10;//instance variable
+
+    public void show(){
+       int x=5;
+       int y=x*x*x;
+        System.out.println("Cube of the given number is :"+y);
+    }
+	
+	void display(){
+        System.out.println("Advanced Java!!!");
+    }
+
+}
+
+public class Sample1 {
+    public static void main(String[] args) {
+
+    }
+}
+==> Class can not be inherited into interface
+
+1) 
+	class A{ //valid
+		---------
+		---------
+		---------			
+	}
+	class B extends A{
+		---------
+		---------
+		---------
+	}
+	
+2)
+	interface A{//valid
+		--------
+		--------
+		-----
+		-----
+	}
+	class B implements A{
+		--------			
+		--------
+		--------
+	}
+	
+3) 
+	interface A{//valid
+		-------
+		-------
+		-------
+	}
+	interface B extends A{
+		------				
+		------
+		------
+	}
+
+4) class A{//Invalid
+		------
+		------
+	}						
+	interface B --- A{
+		------
+		------
+	}
+	
+Note: Java doesn't support Multiple Inheritance, Multipath Inheritance and Hybrid Inheritance
+			A show()		B show() 		
+			|				|
+			-----------------
+					|
+					C
+			C ob=new C();
+			-->ob.show(); --> This statement  gives ambiguity to call either A class show() method or B Class show() method.
+			
+==> Interfaces are introduced in java to achieve the muliple inheritance
+
+			A show()- Interface			B show() 		
+			|							|
+			-----------------------------
+					|
+					C show();
+					
+	Class A{
+		--------
+		--------
+	}
+	class B{
+		--------
+		--------
+	}
+	interface C{
+		--------
+		--------
+	}
+	interface D{
+		-------
+		-------
+	}
+	
+	class E extends A, B{//Invalid
+	
+	}
+	
+	class F implements C, D{//valid
+	
+	}
+	
+		C show()			D show()
+		|					|
+		---------------------
+				|
+				F show()
+			F ob = new F();
+			ob.show();
+			
+	class G extends A implements C{}//valid
+		A show(){----}		C show();
+		|					|
+		---------------------
+				|
+				G show();
+			G ob = new G();
+			ob.show();
+			
+	class H extends A implements C, D{}//valid
+	
+	interface i extends C, D{}
+	
+abstract method:
+----------------
+==> A method which has no body is called as abstract method.
+==> abstract method allows to declare a method in abstract class (or) interface and allows to define in its sub classes with multiple definitions.
+
+										A show()
+										|
+						------------------------------------------------
+						|					|				|			|
+						B show()			C show()		D show()	E show()
+						EvenOdd				 prime()		fact()		cube()
+						
+						
+						A ob = new B();
+						ob.show(); --> even
+						
+						A ob = new C();
+						ob.show();--> prime
+						
+						A ob = new D();
+						ob.show(); --> fact
+						
+						A ob = new E();
+						ob.show();
+						
+==> abstract class supports 0 to 100 % abstraction whereas interface supports only 100% abstraction
+
+Encapsulation:
+--------------
+==> Binding of variables with methods and those methods are operating on same variables, this is known as Encapsulation.
+class Person{
+	private int age;
+	
+	void setAge(int age){
+		if(age>100){
+			this.age=100;
+		}else if(age<0){
+			this.age=0;
+		}else{
+			this.age=age;
+		}
+	}
+	int getAge(){
+		return age;
+	}
+}
+class Demo{
+	public static void main(String args[]){
+		Person p = new Person();
+		p.age=-200;
+	
+		System.out.println(p.getAge());
+	}
+}
+
+==> In the above example 'age' variable bounds with setAge() and getAge() methods and those methods are operating on age variable. This is known as Encapsulation
+
+Inner Classes:
+--------------
+==> A class within the another class, it is known as Inner class
+==> There are '4' types of Inner classes
+	1. Member Class
+	2. Static Member Class (Nested top level class)
+	3. Local Class
+	4. Anonymous Class (It is one type of other class)
+	
+1. Member class:
+----------------
+==> A class i.e., declared as a member of another class is known as member class
+Syntax:
+	OuterClass.InnerClass objectReference = OuterClassObjectReference.new InnerClassName();
+
+public class A {
+	void print(){
+		System.out.println("Advanced Java...!!!");
+	}
+	class B{
+		
+		void show(){
+			System.out.println("Hello World...!!!");
+		}
+		
+		/*static void display(){
+			System.out.println("Core java...!!!");
+		}*/
+	}
+}
+
+public class Demo {
+	
+	public static void main(String args[]){
+		A ob1 = new A();
+		ob1.print();
+		
+		A.B ob2 = ob1.new B();
+		ob2.show();		
+	}
+
+}
+
+Note: In a Member class, only Instance methods are possible and static methods is not possible (must be written in a Nested top level class)
+						
+						
