@@ -6,9 +6,10 @@ public class Test {
         System.out.println(ob1.x);
         ob1.print();
 
-        A.B ob2 = ob1.new B();
+       A.B ob2 = ob1.new B();
         System.out.println(ob2.y);
         ob2.show();
+
     }
 
 }
