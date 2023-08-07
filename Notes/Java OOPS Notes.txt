@@ -1597,3 +1597,66 @@ public class Demo {
         };																		};
 		
 		ob.show();														<==>	C ob1 = new _____C();
+		
+String Handling:
+----------------
+==>"Java API Documentation 8" --> Search in Google
+To get all the packages, sub packages, classes, Interfaces, methods, variables, etc.,
+
+String Handling:
+----------------
+There are '3' String related classes to handle the Strings
+1. java.lang.String
+2. java.lang.StringBuffer
+3. java.lang.StringBuilder
+
+//Constructors
+  public String(); // This consuctor will create a Empty String
+  public String(String);// This Constructor will create some String
+  public String(char[]);  
+  public String(byte[]);
+  public String(StringBuffer);
+  public String(StringBuilder);
+  
+//Methods
+  public int length();// This method is used to get the length of the given String
+  public boolean isEmpty(); --> This method is used to check whther the given String is empty or not
+  public char charAt(int); --> This method is used to get the character of a String for specific index position
+  public byte[] getBytes();
+  public boolean equals(String);  --> This methid is used to verify both the Strings are same or not
+  public boolean equalsIgnoreCase(String); This methid is used to verify both the Strings are same or not by ignoring case sensitivity
+  public boolean startsWith(String, int);
+  public boolean startsWith(String);
+  public boolean endsWith(String);
+  public int hashCode();
+  public int indexOf(String);
+  public int indexOf(String, int);  
+  public int lastIndexOf(String);
+  public int lastIndexOf(String, int);
+  public String substring(int);
+  public String substring(int, int);
+  public String concat(String);
+  public String replace(char, char);  
+  public boolean contains(CharSequence); --> This method is used to check given String contains the original charSequence
+  public String replaceFirst(String, String); -> This method is used to replace the first occurance of String with the new String
+  public String replaceAll(String, String); -> This method is used to replace the every occurance of String with the new String
+  public String replace(CharSequence, CharSequence); --> This method is used to replace the every occurance of Character with the new String
+  public String[] split(String, int);
+  public String[] split(String);    
+  public String toLowerCase();  --> This method is used to conver the given String into lowercase alphabets
+  public String toUpperCase(); --> This method is used to convert the given String into uppercase alphabets
+  public String trim();  
+  public String toString();  
+  public char[] toCharArray();    
+  public static String valueOf(char);
+  public static String valueOf(int);
+  public static String valueOf(long);
+  public static String valueOf(float);
+  public static String valueOf(double);
+  
+  
+==> There are '2' ways to create a Object for String Class
+	1. String s1 = new String("Hello India");
+			(or)
+	2. String s1 = "Hello India";
+  
