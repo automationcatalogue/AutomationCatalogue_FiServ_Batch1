@@ -1613,8 +1613,8 @@ There are '3' String related classes to handle the Strings
 //Constructors
   public String(); // This consuctor will create a Empty String
   public String(String);// This Constructor will create some String
-  public String(char[]);  
-  public String(byte[]);
+  public String(char[]); -->  This Constructor is used to convert the given char array into String
+  public String(byte[]); --> This Constructor is used to convert the given byte array into String
   public String(StringBuffer);
   public String(StringBuilder);
   
@@ -1622,37 +1622,38 @@ There are '3' String related classes to handle the Strings
   public int length();// This method is used to get the length of the given String
   public boolean isEmpty(); --> This method is used to check whther the given String is empty or not
   public char charAt(int); --> This method is used to get the character of a String for specific index position
-  public byte[] getBytes();
+  public byte[] getBytes();> This method is used to conver the given String into th byte array
   public boolean equals(String);  --> This methid is used to verify both the Strings are same or not
   public boolean equalsIgnoreCase(String); This methid is used to verify both the Strings are same or not by ignoring case sensitivity
-  public boolean startsWith(String, int);
-  public boolean startsWith(String);
-  public boolean endsWith(String);
+  public boolean startsWith(String, int); --> This method is used to check given String value starting at specific index
+  public boolean startsWith(String);--> This method is used to check whther given String is startsWith the another String
+  public boolean endsWith(String); --> This method is used to check given String ending with some specific String
   public int hashCode();
-  public int indexOf(String);
-  public int indexOf(String, int);  
-  public int lastIndexOf(String);
-  public int lastIndexOf(String, int);
-  public String substring(int);
-  public String substring(int, int);
-  public String concat(String);
-  public String replace(char, char);  
+  public int indexOf(String); --> This method is used to get the index position of the first occurance of given String
+  public int indexOf(String, int);  --> This method is used to get the index position of the first occurance of given String starting from the given index position
+  public int lastIndexOf(String); --> This method is used to get the index position of the last occurance of given String
+  public int lastIndexOf(String, int); --> This method is used to get the index position of the last occurance of given String
+  starting from the given index position
+  public String substring(int); --> This method is used to get the SubString of a String from starting of the index position
+  public String substring(int, int); --> This method is used to get the SubString of a String from starting of the index position to ending position-1
+  public String concat(String); --> This method is used to concatenates the two Strings data
+  public String replace(char, char);  --> This method is used to convert the given character with another character
   public boolean contains(CharSequence); --> This method is used to check given String contains the original charSequence
   public String replaceFirst(String, String); -> This method is used to replace the first occurance of String with the new String
   public String replaceAll(String, String); -> This method is used to replace the every occurance of String with the new String
   public String replace(CharSequence, CharSequence); --> This method is used to replace the every occurance of Character with the new String
-  public String[] split(String, int);
-  public String[] split(String);    
+  public String[] split(String, int); --> This method is used to split the given String into the String array after some index position
+  public String[] split(String); --> This method is used to split the given String into the String array
   public String toLowerCase();  --> This method is used to conver the given String into lowercase alphabets
   public String toUpperCase(); --> This method is used to convert the given String into uppercase alphabets
-  public String trim();  
+  public String trim();  --> This method is used to trim the extra spaces at the begining of String and ending of String
   public String toString();  
-  public char[] toCharArray();    
-  public static String valueOf(char);
-  public static String valueOf(int);
-  public static String valueOf(long);
-  public static String valueOf(float);
-  public static String valueOf(double);
+  public char[] toCharArray(); --> This method is used to convert the given String into a Character array   
+  public static String valueOf(char);--> This method is used to convert the char value to String
+  public static String valueOf(int); --> This method is used to convert the int value to String
+  public static String valueOf(long); --> This method is used to convert the long value into String
+  public static String valueOf(float); --> This method is used to convert the float value to String
+  public static String valueOf(double); --> This method is used to convert the double value to String
   
   
 ==> There are '2' ways to create a Object for String Class
@@ -1660,3 +1661,29 @@ There are '3' String related classes to handle the Strings
 			(or)
 	2. String s1 = "Hello India";
   
+==> java.lang.Object is a super class for all java classes
+==> java.lang.Object is implicitly inherited in every class
+
+1)
+class Demo extends Object{//Implicitly presents
+	--------
+	--------
+	--------
+}
+
+
+2)
+
+Class A extends Object{//Implicitly presents
+	--------
+	--------
+	--------
+}
+
+Class B extends A{
+	--------
+	--------
+	--------
+}
+
+==> Every String literal itself is a object in String class
