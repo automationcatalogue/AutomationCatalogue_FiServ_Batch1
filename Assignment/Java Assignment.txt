@@ -298,3 +298,17 @@ Assignment-12:
 1. String s1 = "Java Programming testing";
     Write a Program to print the reverse of a String with preserving spaces
     o/p: gnit  setgnimmarg orPavaJ
+
+=====================================================================================================
+Assignment-13:
+
+Explore these methods and practice on this methods
+	public static String toHexString(int) --> It is used to convert decimal integer to HexaDecimal String
+	public static String toOctalString(int) --> It is used to convert decimal integer to Octal String
+	public static String toBinaryString(int) --> It is used to convert decimal integer to Binary String
+
+	public static int parseInt(String) throws NumberFormatException;--> It is used to convert String into the integer format
+
+String str="FiServ batch1 @ Bangalore2 & Chennai5 Learning Core JAVA!!";
+    Write a program to print the number of UpperCase alphabets, Lowercase alphabets, Digits and Special Characters
+=========================================================================================================

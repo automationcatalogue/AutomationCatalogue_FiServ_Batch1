@@ -1615,8 +1615,8 @@ There are '3' String related classes to handle the Strings
   public String(String);// This Constructor will create some String
   public String(char[]); -->  This Constructor is used to convert the given char array into String
   public String(byte[]); --> This Constructor is used to convert the given byte array into String
-  public String(StringBuffer);
-  public String(StringBuilder);
+  public String(StringBuffer); --> This Constructor is used to convert the StringBuffer Class ObjectReference to String class
+  public String(StringBuilder); --> This Constructor is used to convert the StringBuilder Class ObjectReference to String class
   
 //Methods
   public int length();// This method is used to get the length of the given String
@@ -1647,7 +1647,7 @@ There are '3' String related classes to handle the Strings
   public String toLowerCase();  --> This method is used to conver the given String into lowercase alphabets
   public String toUpperCase(); --> This method is used to convert the given String into uppercase alphabets
   public String trim();  --> This method is used to trim the extra spaces at the begining of String and ending of String
-  public String toString();  
+  public String toString();  --> This method will give the content of the String
   public char[] toCharArray(); --> This method is used to convert the given String into a Character array   
   public static String valueOf(char);--> This method is used to convert the char value to String
   public static String valueOf(int); --> This method is used to convert the int value to String
@@ -1687,3 +1687,53 @@ Class B extends A{
 }
 
 ==> Every String literal itself is a object in String class
+
+String s1 = "Hello India";
+	This statement Creates one object in String Constant Pool
+	
+	
+	
+String Constant Pool:
+---------------------
+==> It is one of the memory segment in the RAM
+==> In String Constant Pool, Only String related data will be stored
+==> For better performance of the execution, this memory point will be used
+==> It is going to take less memory Usage as it does not allow duplicate values
+
+public class Demo16 {
+    public static void main(String[] args) {
+        String s1 = "Hello India";
+        String s2 = "Hello India";
+        System.out.println(s1.equals(s2));//true
+        System.out.println(s1==s2);//true
+
+        String s3 = new String("Hello India");
+        String s4 = new String("Hello India");
+        System.out.println(s3.equals(s4));
+        System.out.println(s3==s4);
+    }
+}
+
+==> Equals method of String class compares contents of String Object
+==> Equals operator compares the hashcode
+==> Equals method of Object class compares hashcode
+
+
+==> Whenever Object (or) Object reference is passed as a parameter in a method, then implicitly "toString()" method is called
+==> String class "toString()", method always returns the content of the String
+==> Object class "toString()", method is always returns the classname@hashcode-in hexa decimal format
+
+
+Difference b/w String, String Buffer, String Builder:
+----------------------------------------------------
+String													StringBuffer												StringBuilder
+1. The object of String class is immutable				1. the object of StringBuffer class is mutable				1. The object of StringBuilder class is mutable
+2. The methods of String class are not synchronized		2. The methods of StringBuffer class are synchronized		2. The methods of StringBuilder class is not synchronized
+
+Immutable:
+----------
+==> It means value of the object can not be changed by it self
+
+Mutable:
+----------
+==> It means value of the object can be changed by it self
