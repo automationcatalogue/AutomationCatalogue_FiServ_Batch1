@@ -1737,3 +1737,47 @@ Immutable:
 Mutable:
 ----------
 ==> It means value of the object can be changed by it self
+
+
+Wrapper Classes:
+----------------
+==> Each of Java's 8 primitive datatypes as a class and those classes are called Wrapper classes. because they wrap the data to an object
+Primitive DataType					Reference DataType[Wrapper class]
+---------------------------------------------------------------------
+1. byte				--->            Byte
+2. short			--->			Short
+3. int				--->			Integer
+4. long				--->			Long
+5. float			--->			Float
+6. double			---> 			Double
+7. char				---> 			Character
+8. boolean			--->			Boolean
+
+==> The above wrapper classes are part of java.lang package
+
+Constructor:
+-----------
+	public Integer(int); --> It is used to convert int to Integer
+	
+Method:
+------
+	public int intValue(); --> It is used to convert Integer to int
+	public static String toHexString(int) --> It is used to convert decimal integer to HexaDecimal String
+	public static String toOctalString(int) --> It is used to convert decimal integer to Octal String
+	public static String toBinaryString(int) --> It is used to convert decimal integer to Binary String
+	
+	public static int parseInt(String) throws NumberFormatException;--> It is used to convert String into the integer format
+	
+Primitive type to Reference type								Reference type to Primitive type
+--------------------------------------------------------------------------------------------------
+int x=5;														Inetger ob =new Integer(5);
+Integer ob1 = new Integer(x);									int x=ob.intValue();
+s.o.p(ob1);
+
+Auto boxing:
+-----------
+==> The process of converting from primitive type to corresponding reference type is known as Auto boxing
+
+Auto Unboxing:
+--------------
+==> The process of converting reference type to corresponding primitive typ is known as Auto Unboxing
