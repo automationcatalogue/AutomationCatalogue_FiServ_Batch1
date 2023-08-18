@@ -312,3 +312,14 @@ Explore these methods and practice on this methods
 String str="FiServ batch1 @ Bangalore2 & Chennai5 Learning Core JAVA!!";
     Write a program to print the number of UpperCase alphabets, Lowercase alphabets, Digits and Special Characters
 =========================================================================================================
+====================================================================================================
+Assignment-14:
+
+1. Find the largest substring in a given String
+	Input: Hello Core Java Learning is easy
+	Output: Learning
+
+2. From a given String, sum of the digits.
+	a. Input = 1ax2y34z-yfg45
+	b. sum = 1+2+3+4+4+5=19
+	b. Sum = 1+2+34+45=82
