@@ -49,11 +49,7 @@ public class ALDemo {
         int z=al.lastIndexOf(99);
         System.out.println(z);
 
-        System.out.println("****** Array Values ********");
-        Object obj[]=al.toArray();
-        for(Object ob:obj){
-            System.out.println(ob);
-        }
+        System.out.println(al);
 
 
 
