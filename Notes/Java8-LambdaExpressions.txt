@@ -286,3 +286,107 @@ class Test{
 		}
 	}
 }
+
+========================================================================================================
+Lamda Expressions on Java Collections
+
+public class Demo1 {
+    public static void main(String[] args) {
+        ArrayList<Employee> al = new ArrayList<Employee>();
+        al.add(new Employee("Sagar",42342));
+        al.add(new Employee("Deepanshu",10423));
+        al.add(new Employee("Sumith",64533));
+        al.add(new Employee("Dharanishankar",53432));
+        System.out.println(al);
+
+       Comparator<Employee> c = (e1, e2)->-e1.empName.compareTo(e2.empName);
+       Collections.sort(al,c);
+       System.out.println(al);
+
+    }
+}
+
+====================================================================================================================
+Streams API: (Bulk operations on Collection Objects)
+-----------------------------------------------------
+==> Streams concept will be used to process Objects from the collection
+Example 1:
+----------
+
+ArrayList<Integer> al = new ArrayList<Integer>();
+al.add(0);
+al.add(10);
+al.add(20);
+al.add(5);
+al.add(15);
+al.add(25);
+System.out.println(al)
+
+O/P: [0,10,20,5,15,25]
+
+Without Streams: (Until 1.7Version)
+-----------------------------------
+List<Integer> al1 = new ArrayList<Integer>();
+for(Integer I1:al){
+	if(I1%2==0){
+		al1.add(I1);
+	}
+}
+System.out.println(al1);
+
+With Streams: (From 1.8 Version)
+--------------------------------
+List<Integer> al1 = al.stream().filter(i->i%2==0).collect(Collectors.toList());
+System.out.println(al1);
+
+Filter:
+=======
+==> Filter is a one pre-defined functional interface and it has only one method which return boolean value
+I/p: 0 to 10 number
+O/p: any value betweeen 0 10 may comes
+
+Predicate vs Function:
+----------------------
+==> Predicate is always returns only boolean value
+==> Function may returns any value It could be int or String or boolean
+
+list of marks
+filter based on marks: select only passed students
+marks.stream().filter(m->m>=35)
+input --> 10 elements
+output --> 0 to 10 or <=10
+
+5grace marks
+failesstudents.stream.map(i->i+5)
+map: 10 elements
+input: 10 elements
+
+Purpose of the Steams:
+----------------------
+1. Bulk operations on the Collection Objects
+2. To Create a Stream
+	Steam s = c.stream();
+	
+	Stream() method is presents in collection interface
+	It presents in java.util.Stream package
+To Configure:
+=============
+3. To filter some data from the collection based on boolean condition
+	Filter takes boolean condition
+	filter(Predicate<T> t);
+	
+4. To get complete list of data from the collection objects
+	map(Function<T,R> f);
+	
+Once Data is configured with either through filter() method or map() method:
+
+5. collect() --> To collect the values
+6. count() --> To get the count of collection data
+7. sorted() --> By default it gives Default Natural Sorting order
+8. Sorted(Comparator C) --> To get the Customized sorting order
+9. min(Comparator C) --> To get the min value
+10. max(Comparator C) --> To get the max value
+11. forEach(lambda expression) --> Every element
+12. toArray() --> to conver into Array
+Streams concept not only applicable for Collection, applicable for group of values and Array Values
+13. Stream.Of() --> This method is applicable for Array Values and Group of Values
