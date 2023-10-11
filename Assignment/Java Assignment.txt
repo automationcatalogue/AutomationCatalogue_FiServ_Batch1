@@ -137,7 +137,7 @@ Assignment-8:
 //Inheritance
 1. create a class "A" --> //super class (or) parent class
 		write the instance variable called 
-		int test=99;
+		int JavaTeachings.test=99;
 		
 		write the instance method
 		//method with arguments and with return type

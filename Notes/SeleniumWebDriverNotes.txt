@@ -173,12 +173,7 @@ WebElement methods:
 10. public String getCssValue(String args0); --> This method is used to get the value of given CSS property
 11. public String getTagName(); --> This method is used to return the tagName of a given element
 12. public Point getLocation(); --> This method is used to get the Element Location where on the page
-
-
-
 13. public Point getSize; --> This method is used to get the Element Size on the page
-
-
 
 XPATH:
 ------
@@ -293,3 +288,24 @@ Using (Dot) Symbol:
 	==> .makeFlex.hrtlCenter.font10.makeRelative.lhUser.userLoggedOut --> Login or Create Acount button in Makemytrp website
 	==> .top-level-menu-item.forced-active.active ==> Dashboard in OrangeHRM
 	==> .css-label_c.t_c --> Flexible with Date in OrangeHRM
+	
+Execution of Selenium Scripts in Multiple Browsers:
+---------------------------------------------------
+1. Chrome Browser --> To run the testcases in Firefox browsers either in Windows/Mac/Linux
+	WebDriver driver = new ChromeDriver();	
+
+2. Firefox Browser --> To run the testcases in Firefox browsers either in Windows/Mac/Linux
+	WebDriver driver = new FirefoxDriver();	
+	
+3. Edge Browser --> Testcases to run in the Windows 
+	WebDriver driver = new EdgeDriver();
+	
+4. Safari Browser --> Testcases to run in the Mac (iOS)
+	WebDriver driver = new SafariDriver();
+	
+5. IE Browser --> Microsoft company it self is not giving the Support on IE browser
+	WebDriver driver = new InternetExplorerDriver();
+	
+6. Opera Browser --> In the Latest versions of Selenium4, Opera browser is not supporting
+
+Note: Browser Version should be compatible with Selenium Library version

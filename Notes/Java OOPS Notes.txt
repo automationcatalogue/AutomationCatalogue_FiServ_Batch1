@@ -22,7 +22,7 @@ CLASS:
 	
 		class <className>{
 		
-			public static void test(){
+			public static void JavaTeachings.test(){
 				-----------
 				-----------
 				-----------
@@ -3279,7 +3279,7 @@ Syntax:
 		----------------
 	}
 	
-JDBC (Java Database Connectiviy):
+JavaTeachings.JDBC (Java Database Connectiviy):
 ---------------------------------
 
 MySQL:
@@ -3305,8 +3305,8 @@ DCL:
 ----
 GRANT, REVOKE
 
-JDBC --> Java Database Connectivity
-JDBC is a part of Java SE (Java Standard Edition)
+JavaTeachings.JDBC --> Java Database Connectivity
+JavaTeachings.JDBC is a part of Java SE (Java Standard Edition)
 
 Let's Assume that Application is developed with Java language
 Database is MySQL
@@ -3317,14 +3317,14 @@ Our Java application can't communicate directly with Database, so we are going t
 3. Statement Object will be used to take the SQL query from Java application to SQL and the response of SQL data will take it back to Java Application
 4. After Executing the SQL query, we will be getting ResultSet and this ResultSet is provided by Statement Object
 
-Basic Components of JDBC Application:
+Basic Components of JavaTeachings.JDBC Application:
 -------------------------------------
 1. Driver --> It's like a translator
 2. Connection
 3. Statement 
 4. ResultSet
 
-Steps to Develop JDBC application:
+Steps to Develop JavaTeachings.JDBC application:
 ----------------------------------
 1. Load and Register Driver
 2. Establish connection between Java application and database
@@ -3334,7 +3334,7 @@ Steps to Develop JDBC application:
 6. Close connection
 
 
-1. JDBC Driver: (MySQL Database)
+1. JavaTeachings.JDBC Driver: (MySQL Database)
 2. Install Database (MySQL)
 
 package jdbc;
@@ -3366,8 +3366,8 @@ public class ReadDBData {
 Types of Drivers:
 -----------------
 ==> In the market, there are 1000 drivers are there.
-==> Based on functionality and architecture, JDBC drivers can be divided into '4' categories
-1. Type-1 Driver (JDBC-ODBC Bridge Driver (or) Bridge Driver)
+==> Based on functionality and architecture, JavaTeachings.JDBC drivers can be divided into '4' categories
+1. Type-1 Driver (JavaTeachings.JDBC-ODBC Bridge Driver (or) Bridge Driver)
 2. Type-2 Driver (Native API-Partly Java Driver (or) Native Driver)
 3. Type-3 Driver (All Java net protocol drivers (or) network protocol Drivers (or) middleware drivers)
 4. Type-4 Driver (Pure Java Driver (or) native protocol driver (or) ThinDriver)
@@ -3376,18 +3376,18 @@ In our application, if we using only one driver like Oracle/MySQL, go for Type-4
 Type 4 drivers are the most common and are designed for a particular vendor's database.
 Standalone applications will use these Drivers
 
-Type 3 is a single JDBC driver used to access a middleware server, which, in turn, makes the relevant calls to the database.
+Type 3 is a single JavaTeachings.JDBC driver used to access a middleware server, which, in turn, makes the relevant calls to the database.
 In a project, if multiple databases are present and want to go for single driver. 
 Large scale web applications & Enterprise applications will use these Drivers
 
 when there are no Type-4 & Type-3 drvers not present for my database, then we should go for Type-2 Driver
-Type 2 JDBC drivers require a native database API to be used
+Type 2 JavaTeachings.JDBC drivers require a native database API to be used
 
 
 If Type-4, Type-3, Type-2 Drivers are not present, then go for Type-1 Driver
-Type 1 JDBC drivers are used for testing JDBC applications against an ODBC (Oracle Database) data source
+Type 1 JavaTeachings.JDBC drivers are used for testing JavaTeachings.JDBC applications against an ODBC (Oracle Database) data source
 
-Differences between JDBC and ODBC:
+Differences between JavaTeachings.JDBC and ODBC:
 https://www.tutorialspoint.com/what-is-the-difference-between-odbc-and-jdbc
 
 
@@ -3399,7 +3399,7 @@ Result is always a group of records					Result is always some number like
 													1 Row is deleted
 
 
-==> In JDBC, to execute Queries there are '3' methods present
+==> In JavaTeachings.JDBC, to execute Queries there are '3' methods present
 	1. executeQuery()
 	2. executeUpdate()
 	3. execute()
