@@ -61,8 +61,7 @@ public class WebElementDemo2 {
         driver.findElement(By.xpath("//button[@data-id='location']/div/div/div")).click();
         System.out.println("Location drop-down is clicked");
         Thread.sleep(2000);
-        driver.findElement(By.xpath("//span[text()='India Office']")).click();
-        System.out.println("India Office is selected as Location");
+        CommonUtils.selectDropDown(By.xpath(""),"India Office");
 
         driver.findElement(By.xpath("//button[@type='button'][@class='btn btn-secondary']")).click();
         System.out.println("Next button is clicked");
@@ -72,8 +71,7 @@ public class WebElementDemo2 {
         System.out.println("Marital Status is clicked");
 
         Thread.sleep(2000);
-        driver.findElement(By.xpath("//span[text()='Married']")).click();
-        System.out.println("Married status is selected");
+        CommonUtils.selectDropDown(By.xpath("//div[@id='emp_marital_status_inputfileddiv']/div/ul/li"),"Single");
 
         boolean isNextPresent =  driver.findElement(By.xpath("//button[@translate='Next']")).isDisplayed();
         if(isNextPresent){
@@ -87,8 +85,7 @@ public class WebElementDemo2 {
         driver.findElement(By.xpath("//label[text()='Region']/../div[1]/button/div/div/div")).click();
         System.out.println("Region drop-down is clicked");
 
-        driver.findElement(By.xpath("//span[text()='Region-2']")).click();
-        System.out.println("Region-2 drop-down is clicked");
+        CommonUtils.selectDropDown(By.xpath("//label[text()='Region']/../div/div/div/ul/li"),"Region-1");
 
         Thread.sleep(2000);
         driver.findElement(By.xpath("//label[text()='FTE']/../div/button/div/div/div")).click();
