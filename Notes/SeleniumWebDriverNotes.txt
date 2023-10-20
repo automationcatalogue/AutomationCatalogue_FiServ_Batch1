@@ -458,21 +458,16 @@ Actions action=new Actions(driver);
 1. click(WebElement); --> This method is used to click in the middle of the given element
 2. clickAndHold(); --> This method is used to click (without releasing) at the current mouse location.
 3. clickAndHold(WebElement); --> This method is used to click (without releasing) in the middle of the given element.
-
-
 4. contextClick(); --> This method is used to right-click at the current mouse location
 5. contextClick(WebElement); --> This method is used to right-click in the middle of the given element.
 6. doubleClick(); --> This method is used to double-click at the current mouse location
 7. doubleClick(WebElement); This method is used to double-click in the middle of the given element.
-
 8. dragAndDrop(WebElement source, WebElement target); -->This method is used to performs click and hold at the location of the source element, moves the location of the target element, then releases the mouse
 9. dragAndDropBy(WebElement source, int xOffset, int yOffset); This method is used to performs click and hold at the location of the source element, moves by a given offset, then releases the mouse
-
 10. keyDown(Keys theKey); --> It performs a modifier key press
 11. keyDown(WebElement element, Keys theKey); --> It performs a modifier the key press after focusing on an element
 12. keyUp(Keys theKey); --> It performs a modifier key release
 13. keyUp(WebElement element, Keys theKey); --> It performs a modifier the key release after focusing on an element
-
 14. moveByOffset(int xOffset, int yOffset); --> This method is used to move the mouse from its current position by the given offset.
 15. moveToElement(WebElement); --> This method is used to  mouse-hover on the middle of the given element
 16. movetToElement(WebElement element, int xOffset, int yOffet); --> This method is used the mouse-hover to an offset from the top-left corner of the element.
