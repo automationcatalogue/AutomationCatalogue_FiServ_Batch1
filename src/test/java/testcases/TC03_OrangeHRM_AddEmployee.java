@@ -8,22 +8,55 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.yaml.snakeyaml.Yaml;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.time.Duration;
+import java.util.Map;
+import java.util.Properties;
 
 public class TC03_OrangeHRM_AddEmployee {
     public static void main(String[] args) throws Exception{
-        WebDriver driver = CommonUtils.launchBrowser("firefox");
+        String projectPath = System.getProperty("user.dir");
+        //FileInputStream fis_Properties = new FileInputStream(projectPath+"//TestData//TestData_Batch1.properties");
+        //Properties prop = new Properties();
+        //prop.load(fis_Properties);
+        Yaml yaml = new Yaml();
+        FileInputStream fis_Yaml = new FileInputStream(projectPath+"//TestData//TestData_Batch1.yaml");
+        Map<String, String> map = yaml.load(fis_Yaml);
+        String browser = map.get("browserName");
+        System.out.println("Browser from Yaml file is :"+browser);
+
+        //String browser = prop.getProperty("browserName");
+        //System.out.println("Browser from Properties file is :"+browser);
+
+        //WebDriver driver = CommonUtils.launchBrowser(browser);
+
+        DesiredCapabilities caps = new DesiredCapabilities();
+        caps.setCapability("requireWindowFocus",true);
+
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--incognito");
+        options.addArguments("--start-maximized");
+        options.merge(caps);
+
+        WebDriver driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 
-        String projectPath = System.getProperty("user.dir");
+
         FileInputStream fis = new FileInputStream(projectPath+"//TestData//TestData.xlsx");
         XSSFWorkbook wbk = new XSSFWorkbook(fis);
         XSSFSheet sh = wbk.getSheet("OrangeHRM_AddEmployee");
 
-        driver.get("https://automatetest-trials710.orangehrmlive.com/");
-        System.out.println("OrangeHRM URL is loaded");
+        //String url = prop.getProperty("orangeHRM_URL");
+        String url = map.get("orangeHRM_URL");
+        driver.get(url);
+        System.out.println(url + "OrangeHRM URL is loaded");
 
         driver.manage().window().maximize();
         System.out.println("Chrome Browser window is maximized");
@@ -51,7 +84,7 @@ public class TC03_OrangeHRM_AddEmployee {
         driver.findElement(By.partialLinkText("Employee List")).click();
         System.out.println("Employee List is link is clicked");
 
-
+    /**
         driver.findElement(By.id("addEmployeeButton")).click();
         System.out.println("Add Employee button is clicked");
 
@@ -138,7 +171,21 @@ public class TC03_OrangeHRM_AddEmployee {
         String empID = driver.findElement(By.xpath("//div[text()='Employee Id: ']/span")).getText();
         System.out.println("New Employee Id is:"+empID);
 
-
+        **/
+        /**String empID = "7895623";
+        FileOutputStream fos = new FileOutputStream(projectPath+"//TestData//TestData_Batch1.properties");
+        prop.load(fis_Properties);
+        prop.setProperty("empID",empID);
+        prop.setProperty("EmployeeName","Dharanishankar");
+        prop.store(fos,"EmployeeName data is updated in Properties file");
+        fos.close();**/
+        String empID = "7895623";
+        FileWriter fw = new FileWriter(projectPath+"//TestData//TestData_Batch1.yaml");
+        //Map<String, String> map1 = yaml.load(fis_Yaml);
+        //map1.put("EmployeeID",empID);
+        map.put("browserName","chrome");
+        yaml.dump(map,fw);
+        fw.close();
         driver.quit();
     }
 }

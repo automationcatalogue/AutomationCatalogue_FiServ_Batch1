@@ -613,10 +613,10 @@ Methods:
 10. elementToBeClickable(WebElement element) --> An expectation for checking element is visible and enabled, such that you can click it
 11. presenceOfElementLocated(By locator) --> An expectation for checking that an element is present on the DOM of a page.
 12. presenceOfAllElementsLocatedBy(By locator) --> An expectation for checking that there is at least one element present on a web page.
-10. stalenessOf(WebElement element) --> Wait until an element is no longer attached to the DOM.
-11. textToBePresentInElement(WebElement element, String text) --> An expectation for checking if the given text is present in the specified element
-12. titleContains(String title) --> An expectation for checking that the title contains a case-sensitive substring
-13. urlContains(String fraction) --> An expectation for the URL of the current page to contain specific text.
+13. stalenessOf(WebElement element) --> Wait until an element is no longer attached to the DOM.
+14. textToBePresentInElement(WebElement element, String text) --> An expectation for checking if the given text is present in the specified element
+15. titleContains(String title) --> An expectation for checking that the title contains a case-sensitive substring
+16. urlContains(String fraction) --> An expectation for the URL of the current page to contain specific text.
 
 
 ==> 1. elementToBeClickable ==> This condition will wait till the specific webelement is presents in the DOM and it is visible in the UI and It should be clickable
@@ -658,3 +658,181 @@ Solution 2: Using Try Catch Block
 Solution 3: Using ExpectedConditions.refreshed
 	wait.until(ExpectedConditions.presenceOfElementLocated(By.id("table")));
 	wait.until(ExpectedConditions.refreshed(ExpectedConditions.stalenessOf("table")));
+=================================================================================================
+Fluent Wait:
+------------
+==> Explicit Wait can be achieved in '2' ways.
+	1. WebDriverWait
+	2. FluentWait
+	
+==> Fluent finds the Web element repeatedly at regular intervals of time until the timeout (OR) till the object gets found.
+==> Unlike WebDriverWait, FluentWait will builds with the customized wait methods based on condition
+==> Both FluentWait and WebDriverWait implements the "Wait" interface
+
+==> Whatever synchronization is possible through WebDriverWait, same will be done through FluentWait also.
+==> In WebDriverWait, there are predefined expected conditions to implement the synchronization in selenium, but whereas for FluentWait there are no specific predefined expected conditions, which needs to develop customized conditions to implement FluentWait.
+
+==> In WebDriverWait, Delay time is 500 ms and whereas FluentWait Delay time (calls as Polling time) is customized.
+	
+	Syntax and Example:
+-------------------
+
+   Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+       .withTimeout(30, SECONDS)
+       .pollingEvery(15, SECONDS)
+       .ignoring(NoSuchElementException.class);
+
+   WebElement foo = wait.until(new Function<WebDriver, WebElement>() {
+     public WebElement apply(WebDriver driver) {
+       return driver.findElement(By.id("foo"));
+     }
+   });
+   
+ImplicitWait												WebDriverWait											FluentWait
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+1. It is applicable for all objects 						1. It is applicable for a specific condition			1. It is applicable for a specific 
+(because it associates with webDriver)																				condition
+2. NoSuchElementException and ElementInteractableExceptions	2. TimeOutException										2. TimeOutException
+3. DelayTime is 250 ms										3. DelayTime is 500 ms									3. Polling Time is customized
+
+Properties File:
+----------------
+
+Read and Write Data using Properties file:
+------------------------------------------
+==> .properties are one the files which can be used to maintain the TestData for Configurations
+==> Properties is a predefined class in Java
+
+==> To Read the Data in properties file
+-----------------------------------------
+	Properties prop = new Properties(); --> Creating the Properties file object
+	FileInputStream fis = new FileInputStream(propertiesFilePath);  -->Properties file is opened in a read mode
+	prop.load(fis); --> To load all the data from properties into a prop object
+	
+	prop.getProperty("proertyName"); -->To Read the Value of a PropertyName
+
+==> To Write the Data in properties file:
+-----------------------------------------
+	Properties prop = new Properties(); --> Creating the Properties file object
+	FileOutputStream fis = new FileOutputStream(propertiesFilePath);  -->Properties file is opened in a Write mode
+	prop.load(fis); --> To load all the data from properties into a prop object
+	
+	prop.setProperty("proertyName","propertyValue"); -->PropertyValue will be written against to PropertyName
+	prop.store(fos,"comment"); --> written Data will be stored in the properties file
+	prop.close(); --> To Close the property file
+	
+======================================================================================================================================
+YAML files:
+-----------
+YAML -->YAML Ain't Markup Language
+
+==> This is similar to the JSON file (Javascript Object Notation)
+==> Data readability is comfortable
+==> Both yml and yaml files are same
+==> To work with YAML file, SnakeYaml file needs to download and should add into the project
+
+==> To Read the Data in yaml file
+-----------------------------------------
+	Yaml ob = new yaml(); --> Creating the yaml object
+	FileInputStream fis = new FileInputStream(yamlFilePath);  -->Yaml file is opened in a read mode
+	ob.load(fis); --> To load all the data from Yaml into a prop object
+		Return type of load method is Object --> so should be stored in the map object
+		Map<String, String> map = ob.load(fs);
+			(OR)
+		Map<String, Map> map = ob.load(fs);	//Based on the requirement
+		
+	To read the Data from a map, use the get method and pass the key, value will be returned
+	map.get("key"); --> To Read the data
+	
+==> To Write the Data in yaml file:
+-----------------------------------------
+	Yaml ob = new yaml(); --> Creating the file object
+	FileWrite fw = new FileWriter(yamlFilePath);  -->Yaml file is opened in a Write mode
+	ob.load(fis); --> To load all the data from Yaml into a prop object
+		Return type of load method is Object --> so should be stored in the map object
+		Map<String, String> map = ob.load(fs);
+			(OR)
+		Map<String, Map> map = ob.load(fs);	//Based on the requirement
+	
+	map.put(key, value);  --> To Write the Data into a map, use the map method
+	yaml.dump(map,fw) --> To write the map data into a file
+	fw.close(); --> To Close the fileWriter
+	
+======================================================================================================================
+Desired Capabilities/Options Classes:
+--------------------------------------
+
+What is Desired Capability?
+---------------------------
+==>The Desired Capability is a series of key/value pairs that stores browser properties like browser name, browser version, the path of browser driver in the system to determine the behaviour of the browser at run time.
+	(OR)
+==> DesiredCapabilities allows the browsers to launch with certain configuration.
+
+When new ChromeDriver(); (OR) new FirefoxDriver(); (OR) new InternetExplorerDriver(); (OR) new OperaDriver(); (OR) new EdgeDriver();
+==> A Very fresh browser is launched without any configuration.
+==> But When DesiredCapabilities are used for WebDriver object, browsers will be launched with certain configuration
+
+DesiredCapabilities and Options classes links:
+-----------------------------------------------
+
+==> Please refer the DesiredCapabilities class in Selenium.dev documentation to know more about DesiredCapabilities
+	https://www.selenium.dev/selenium/docs/api/java/index.html --> select/click on DesiredCapabilities to get all relevant Info
+	
+==> Below link will show you all the possible key value pairs which can be used in DesiredCapabilities
+	https://github.com/SeleniumHQ/selenium/wiki/DesiredCapabilities
+	
+==> Below link will show you all the ChromeOptions arguments
+	https://peter.sh/experiments/chromium-command-line-switches/
+	
+==> ==> Below link will show you all the InternetExplorer Capabilities
+	https://maheshambati.wordpress.com/2013/11/06/internet-explorer-options-selenium/
+
+
+Most frequent desired capabilities Uses with IE browser:
+--------------------------------------------------------
+		DesiredCapabilities caps= new DesiredCapabilities();
+		caps.setCapability("ignoreProtectedModeSettings", true); --> //To set the ProtectedModeSettings Enabled for all Zones
+		caps.setCapability("ignoreZoomSetting", true); //To Make Zoom level to 100%
+		caps.setCapability("requireWindowFocus", true);//To Make the IE browser having the focus on execution
+		caps.setCapability("enablePersistentHover", true); //To make the mouse over events at the last location the mouse cursor has been moved to.
+		caps.setCapability("enableElementCacheCleanup", true); //This determines whether the driver should attempt to remove obsolete elements from the element cache on page navigation
+
+==> Until Selenium3 --> In Selenium, Desired Capabilities class is present
+==> In Selenium4 onwards --> DesiredCapabilities class is deprecated, inplace of DesiredCapabilities Options classes are Introduced
+
+1. Chrome Browser --> ChromeOptions
+2. Firefox Browser --> FirefoxOptions
+3. Edge Browser --> EdgeOptions
+4. Safari Browser --> SafariOptions
+
+These Option classes are Used to manipulate your browser with some default properties
+	(or)
+If we want set some properties for our browser before It launches, we should use browser related options classes
+
+ChromeOptions Class:
+--------------------
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("start-maximized"); //To Maximize the screen
+		options.addArguments("--incognito"); // To open the browser in Incognito mode
+		options.addArguments("--disable-popup-blocking");//To Disable the pop-up blocker
+		options.addArguments("--ignore-certificate-errors");//To Ignore the certificate related errors
+		options.setAcceptInsecureCerts();// To accept the websites which are not having security certificate
+		
+		options.setBinary("/path/to/other/chrome/binary"); //To use chrome executable binary from non-standard location
+		options.addExtensions(new file("<plugin extension of crx file path>"));//To add the extensions for a chrome browser
+		
+To Merge the DesiredCapabilities with ChromeOptions class, use the merge() method, so that both DesiredCapabilities and chrome options can be passed to the WebDriver object
+-->		DesiredCapabilities caps = new DesiredCapabilities();
+		caps.setCapability("something", true);
+		
+-->		ChromeOptions options = new ChromeOptions();
+		options.addArguments("something");
+		
+--> 	options.merge(caps); //This method is used to merge all the DesiredCapabilities into ChromeOptions class
+
+	WebDriver driver = new ChromeDriver(options);
+		
+		
+==> Below link will show you all the ChromeOptions arguments
+	https://peter.sh/experiments/chromium-command-line-switches/
+	
