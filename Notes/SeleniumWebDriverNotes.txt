@@ -1,5 +1,5 @@
 1. OrangeHRM - Employee Management Website
-	https://automatetest-trials710.orangehrmlive.com
+	https://automationteste-trials710.orangehrmlive.com
 	username: Admin
 	Password: Admin@123
 	
@@ -836,3 +836,205 @@ To Merge the DesiredCapabilities with ChromeOptions class, use the merge() metho
 ==> Below link will show you all the ChromeOptions arguments
 	https://peter.sh/experiments/chromium-command-line-switches/
 	
+=========================================================================================================================
+JavaScriptExecutor
+==> Predefined interface in Selenium Library
+
+==>JavaScript is used to make the Website Interactive
+==>JavaScript can change the content of the html page dynamically
+	
+Java script Executor:
+----------------------
+--> While performing test scenarios, there are certain actions those become inherent part of test scripts. If there are any issues while performing the actions we can use Java script executor.
+Actions may be:
+1. Clicking a button, hyperlink, link etc.,
+2. Typing a text in text-box
+3. scrolling vertically, horizontally or until the desired object in to view and many more ...
+
+Why should we use JavaScriptExecutor:
+-------------------------------------
+1. Because of cross domain policies of browsers enforces our script execution may fail unexpectedly without adequate error messaging.
+2. JavaScriptExecutor presents the capabilities to execute the Javascript directly within the browser.
+3. JavaScriptExecutor enhances the existing scripts by performing javascript injection into our application. In Simple words "JavaScript can be executed within the browser with the help of JavaScript Executor"
+4. JavaScriptExecutor allows to run pure JavaScript code irrespective of the Selenium language binding(Java, C#, Python etc.,)
+
+
+
+JavaScriptExecutor:
+-------------------
+==> JavascriptExecutor is a predefined interface in selenium.
+
+1. executeScript(String script, args);--> Executes JavaScript in the context of the currently selected frame or window.
+2. executeAsyncScript(String script, args); --> Execute an asynchronous piece of JavaScript in the context of the currently selected frame or window.
+
+script--> It is a Javascript which needs to be executed at run-time
+args --> the parameters that the script required for its execution
+
+
+Syntax:
+-------
+JavaScriptExecutor js=(JavaScriptExecutor)driver;
+js.executeScript(script, args);
+
+JavaScriptExecutor scripts and it's implementation:
+-----------------------------------------------------
+==> JavaScriptExecutor js=(JavaScriptExecutor)driver;
+
+1. Clicking a WebElement
+	WebElement element=driver.findElement();
+	js.executeScript("arguments[0].click();", element);
+	
+2. Typing in text-box
+	//document.getElementById('ID of a WebElement'); --> Finds an element using Id
+	//document.getElementsByTagName(name); --> Finds elements using tagName
+	//document.getElementsByClassName(name) --> Finds elements using className
+	
+	js.executeScript("document.getElementById('ID of a WebElement').value='<testdata>'");
+	(OR)
+	WebElement element = driver.findElement(By.xpath("*******"));
+	js.executeScript("arguments[0].value='<testdata>';", element);
+	
+3. scrolling
+	
+	js.executeScript("window.scrollBy(0,50)");//vertically down by 50 pixels
+	js.executeScript("window.scrollBy(0,-50)");//vertically up by 50 pixels
+	js.executeScript("window.scrollBy(50,0)");//Horizontally towards right by 50 pixels
+	js.executeScript("window.scrollBy(-50,0)");//Horizontally towards left by 50 pixels
+	
+	js.executeScript("window.scrollTo(0, document.body.scrollHeight)");// To Scroll bottom of the page
+	js.executeScript("window.scrollTo(0, -document.body.scrollHeight)");// To Scroll top of the page
+	js.executeScript("window.scrollTo(document.body.scrollWidth, 0)");// To Scroll right side of the page
+	js.executeScript("window.scrollTo(-document.body.scrollWidth, 0)");// To Scroll left side of the page
+	
+	js.executeScript("arguments[0].scrollIntoView(true);", element); //scrolling down (or) up until the element in view.
+
+4. Refresh the browser
+	js.executeScript("history.go(0)");
+	
+5. Navigate to a different page
+	js.executeScript("window.location = \'<URL>'");
+
+6. To get the Title of the page
+	js.executeScript("return document.title;").toString();
+	
+7. To get the URL of the page
+	js.executeScript("return document.URL;").toString();
+
+8. To get the Domain of the page
+	js.executeScript("return document.domain;").toString();
+9. To get the InnerText of the entire webpage in selenium
+	//document.documentElement.innerText
+	js.executeScript("return document.documentElement.innerText").toString();
+10. To get the InnerHtml of the entire webpage in selenium
+	js.executeScript("return document.documentElement.innerHTML").toString();
+	
+	
+To know all JavascriptExecutor methods and scripts, refer the below link:
+-------------------------------------------------------------------------
+https://www.w3schools.com/js/js_htmldom.asp
+
+============================================================================================================================================
+WebTables:
+----------
+==> If the application data contains in the form of rows and columns, that it self called as WebTable
+==> Below is the typical structure you see in the DOM
+
+<table id='abcd', name='xyz'>
+	<thead>
+		<tr>
+			<th header1='value1'>
+			<th header2='value2'>
+			<th header3='value3'>
+			<th header4='value4'>
+			<th header5='value5'>
+		</tr>
+	</thead>
+	<tbody>
+		<tr id='1'>
+			<td attr1='value1'>
+			<td attr2='value2'>
+			<td attr3='value3'>
+			<td attr4='value4'>
+			<td attr5='value5'>
+		</tr>
+		<tr id='2'>
+			<td attr1='value1'>
+			<td attr2='value2'>
+			<td attr3='value3'>
+			<td attr4='value4'>
+			<td attr5='value5'>
+		</tr>
+		<tr id='3'>
+			<td attr1='value1'>
+			<td attr2='value2'>
+			<td attr3='value3'>
+			<td attr4='value4'>
+			<td attr5='value5'>
+		</tr>
+		<tr id='4'>
+			<td attr1='value1'>
+			<td attr2='value2'>
+			<td attr3='value3'>
+			<td attr4='value4'>
+			<td attr5='value5'>
+		</tr>
+		<tr id='5'>
+			<td attr1='value1'>
+			<td attr2='value2'>
+			<td attr3='value3'>
+			<td attr4='value4'>
+			<td attr5='value5'>
+		</tr>
+		<tr id='6'>
+			<td attr1='value1'>
+			<td attr2='value2'>
+			<td attr3='value3'>
+			<td attr4='value4'>
+			<td attr5='value5'>
+		</tr>
+
+	</tbody>
+
+</table>
+
+==> tbody --> It represents complete table body
+==> tr --> It represents the table row
+==> td --> It represents the table column
+
+1. 
+==> To Retrieve the Specific row information
+	Syntax:
+	------
+		//table[@id='******']/tbody/tr[rowNumber]
+		
+	Examples
+		//table[@id='employeeListTable']/tbody/tr[5]
+		
+2.
+==> To Retrieve the all rows information
+	Syntax:
+	------
+		//table[@id='******']/tbody/tr
+	
+	Example:
+	--------
+		//table[@id='employeeListTable']/tbody/tr
+		
+3. To Retrieve the data from Specific row and Specific cell data
+	Syntax:
+	-------	
+		//table[@id='******']/tbody/tr[rowNumber]/td[columnNumber]
+	Example:
+	--------
+		//table[@id='employeeListTable']/tbody/tr[3]/td[6]
+		
+4. To Retrieve all columns information for a specific row
+	Syntax:
+	-------
+		//table[@id='********']/tbody/tr[rowNumber]/td
+	Example:
+	--------
+		//table[@id='employeeListTable']/tbody/tr[1]/td
+		
+========================================================================================================
+Selenium4 Features
