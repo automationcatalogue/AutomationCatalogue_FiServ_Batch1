@@ -1037,4 +1037,107 @@ WebTables:
 		//table[@id='employeeListTable']/tbody/tr[1]/td
 		
 ========================================================================================================
-Selenium4 Features
+Selenium4 Features:
+-------------------
+		Selenium3 vs Selenium4 Core Differences
+		
+Architecture of Selenium 3 vs Selenium 4
+Selenium 3 Architecture:
+========================
+Selenium 3 Architecture is made up of four major components:
+
+Selenium Client library / Language Bindings
+JSON wire protocol over HTTP
+Browser Drivers
+Browsers
+Selenium Client Library connects with Browser Drivers and Browsers using the JSON (JavaScript Object Notation) Wire Protocol. 
+
+JSON protocol provides a transport mechanism for transferring data between client and server on the web through various data structures like arrays and objects used to read and write data from JSON.
+
+JSON acts as a REST (Representational State Transfer) API to exchange information between HTTP servers. 
+JSON wire protocol was used before Selenium version 3.8. After Selenium 3.8, W3C protocol was introduced. But, in version 3 they still provided the support for JSON wire protocol, which was completely removed later in Selenium 4
+
+Selenium 4 Architecture:
+========================
+W3C protocol was introduced because all the web browsers followed the W3C standards and also all the browser drivers followed the W3C standards. To standardise the communication, JSON wire protocol was replaced by W3C. This helped in better communication with the browsers, stability, and common code (i.e. no browser specific code required). 
+
+Due to W3C there is a direct transfer of information between client and server.
+
+Major components of selenium 4 are selenium client and webdriver language bindings.
+
+2. Chrome Driver
+Let’s first understand the hierarchy of Selenium 4 Webdriver (see diagram below) and see how ChromeDriver works. In Selenium 4 chromedriver class extends chromium driver, it was not the case in selenium 3. In Selenium 3, chromedriver directly extended Remote WebDriver class.
+
+3. Optimized Selenium Grid in Selenium 4
+Unlike Selenium 3, testers would no longer be required to start the Hub and Node jars every time they want to perform automation testing. In Selenium 4, Hub and Node are packed in a single jar file. Selenium Grid 4 architecture supports 4 processes – Session Map, Node, Router and Distributor. Selenium Grid 4 has more scalable and traceable infrastructure. There are some additional perks like enhanced GUI and built in support for Docker.
+
+4. Selenium 4 IDE
+Selenium 4 IDE is available for firefox and chrome browser. It is more than just a record and playback testing tool. There is a SIDE Runner tool which allows us to run selenium tests parallely on local selenium grid and cloud based selenium grid.They have also improved the GUI for a better user experience. 
+
+5. Relative Locators
+Relative Locators (above, below, toRightof,toLeftof, near) have been introduced in Selenium 4 which help to identify elements ‘relative’ to a particular element in DOM. Unlike Selenium 3, we don’t have to use a series of findelement commands to locate the surrounding elements. 
+
+Selenium uses a javascript function getBoundingClientRect() to determine the size and positions of elements on the page and uses this information to locate the neighbouring elements.
+
+Above
+------
+By username = RelativeLocator.with(By.id("loginusername")).above(By.id("loginpassword"));
+driver.findElement(username).sendKeys("demouser");
+
+Below
+-----
+By pwd = RelativeLocator.with(By.id("loginpassword")).below(By.id("loginusername"));
+driver.findElement(pwd).sendKeys("test");
+
+LeftOf
+------
+By CloseBtn = RelativeLocator.with(By.tagName("button")).toLeftOf(By.xpath("//button[contains(text(),\"Log in\")]"));
+
+RightOf
+-------
+By LoginBtn = RelativeLocator.with(By.xpath("//button[contains(text(),\"Log in\")]")).toRightOf(By.tagName("button"));
+
+Near
+----
+By username = RelativeLocator.with(By.id("loginusername")).near(By.id("loginpassword"));
+
+6. Chrome DevTools
+This is a new feature in selenium 4 as some applications are difficult to automate as they have different functionalities across different locations.It is hard to emulate the geo-locations in a browser using selenium.
+
+Selenium 4 supports Chrome DevTools Protocol (CDP) with DevTools interface which helps to easily emulate such applications.This interface’s API’s help to diagnose issues and edit the pages on-the-fly very easily. These APIs also help testers for geolocation testing by replicating the geographical locations and also test under various network conditions like 2G, 3G,4G etc.
+
+For example:
+ChromeDriver driver = new ChromeDriver();
+DevTools devTools = driver.getDevTools();
+devTools.createSession();
+devTools.send(Emulation.setGeolocationOverride(Optional.of(52.5043),
+Optional.of(13.4501),
+Optional.of(1)));
+driver.get("https://my-location.org/");
+driver.quit();
+
+7. DesiredCapabilities
+In Selenium 4, DesiredCapabilities class has been replaced by Options class. Now we need to pass Options class object as a parameter to the driver constructor.
+
+For Example, FirefoxDriver(driver) will be FirefoxDriver(ChromeOptions).
+
+In Selenium 3 
+DesiredCapabilities caps = DesiredCapabilities.firefox();
+caps.setCapability("platform", "Windows 10");
+caps.setCapability("version", "92");
+caps.setCapability("build", myTestBuild);
+caps.setCapability("name", myTestName);
+WebDriver driver = new RemoteWebDriver(new URL(cloudUrl), caps);
+
+In Selenium 4 
+FirefoxOptions browserOptions = new FirefoxOptions();
+browserOptions.setPlatformName("Windows 10");
+browserOptions.setBrowserVersion("92");
+Map<String, Object> cloudOptions = new HashMap<>();
+cloudOptions.put("build", myTestBuild);
+cloudOptions.put("name", myTestName);
+browserOptions.setCapability("cloud:options", cloudOptions);
+WebDriver driver = new RemoteWebDriver(new URL(cloudUrl), browserOptions);
+
+8. Actions Class
+There are a few methods that are newly added to the actions class in Selenium 4 such as ContextClick(), Click(), ClickAndHold(), doubleClick(), and release().
