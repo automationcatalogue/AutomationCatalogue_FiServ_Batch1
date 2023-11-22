@@ -1,4 +1,4 @@
-@OrangeHRM
+@All @OrangeHRM
 Feature: To Test the OrangeHRM Add Employee functionality
 
   @OrangeHRM_AddEmployee

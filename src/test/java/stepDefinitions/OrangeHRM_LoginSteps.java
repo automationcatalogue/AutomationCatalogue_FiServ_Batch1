@@ -1,6 +1,8 @@
 package stepDefinitions;
 
 import Utils.BaseClass;
+import Utils.CommonUtils;
+import Utils.Config;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -14,19 +16,23 @@ import java.time.Duration;
 
 public class OrangeHRM_LoginSteps {
 
-    @Given("User is opened the Chrome browser")
-    public void openBrowser(){
-        WebDriver driver = new ChromeDriver();
-        System.out.println("Chrome Browser is launched");
+    @Given("User is opened the {string} browser")
+    public void openBrowser(String browserName){
+        WebDriver driver = CommonUtils.launchBrowser(browserName);
+        System.out.println(browserName+" Browser is launched");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         new BaseClass(driver);
     }
 
-    @Given("User launches OrangeHRM application URL")
-    public void launchURL(){
+    @Given("User launches {string} application URL")
+    public void launchURL(String appName){
         WebDriver driver = BaseClass.getDriver();
-        driver.get("https://automationdata-trials710.orangehrmlive.com/");
-        System.out.println("OrangeHRM Application is loaded");
+        if(appName.equalsIgnoreCase("OrangeHRM")){
+            driver.get(Config.orangeHRM_URL);
+        }else if(appName.equalsIgnoreCase("DemoWebShop")){
+            driver.get(Config.demoWebShop_URL);
+        }
+        System.out.println(appName+" Application is loaded");
     }
 
     @When("User is entered the {string} as UserName")

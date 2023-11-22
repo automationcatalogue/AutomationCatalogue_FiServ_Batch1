@@ -1,10 +1,10 @@
-@OrangeHRM
+@All @OrangeHRM
 Feature: Testing of OrangeHRM Login functionality
 
   @OrangeHRM_ValidData @OrangeHRM_Login
   Scenario: OrangeHRM Login with Valid Data
-    Given User is opened the Chrome browser
-    Given User launches OrangeHRM application URL
+    Given User is opened the "Chrome" browser
+    Given User launches "OrangeHRM" application URL
     When User is entered the "Amanda" as UserName
     And User is entered the "Admin@123" as Password
     And User is clicked on Login button
