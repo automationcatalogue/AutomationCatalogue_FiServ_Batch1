@@ -11,12 +11,11 @@ import org.openqa.selenium.WebDriver;
 
 public class OrangeHRM_AddEmployeeSteps {
 
-
-
     @Given("User launches OrangeHRM application in {string} browser")
     public void user_launches_orange_hrm_application_in_browser(String browserName) {
         WebDriver driver = CommonUtils.launchBrowser(browserName);
         driver.get(Config.orangeHRM_URL);
+        new BaseClass(driver);
     }
     @When("User is entered {string} and {string} credentials")
     public void user_is_entered_and_credentials(String userName, String password) {

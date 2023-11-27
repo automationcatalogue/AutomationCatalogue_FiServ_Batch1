@@ -289,3 +289,56 @@ Examples:
 --------------------
 ==> Whenever any specific Gherkin step needs to execute multiple times with different sets of TestData,
 then we should go with Data Tables concept in Cucumber
+
+
+Background:
+----------
+==> It is a one of the Gherkin Keyword, which is used before all the scenarios
+==> In the Background keyword, we generally mention the pre-requisite steps before actual scenario started
+==> Before executing any specific scenario, background steps will be executed first and then scenario steps will be executed
+==> Background keyword is applicable for a specific feature file
+
+
+Cucumber Hooks:
+--------------
+==> Cucumber hooks (block of code) file will be executed before executing your scenarios and after executing your scenarios
+below '4' annotations will be used as part of your cucumber hooks file
+1. @Before
+2. @After
+3. @BeforeStep
+4. @AfterStep
+
+@Before:
+-------
+==> Before executing every scenario of all feature files, Before annotation block of code will be executed
+==> In general, Log file initialization, Reports Initialization, TestData (Excel file load) etc.,block of code will be written
+
+@After:
+------
+==>After executing every scenario of all feature files, After annotation block of code will be executed
+==>In general, tearDown() activities(block of code) will be written as part of the After annotation
+==> @After annotation block of code will be executed irrespective of scenario is failed or passed
+==> In the After annotation block of code we can also mark the pass/fail status of the scenario
+
+@BeforeStep:
+-----------
+==> Before Executing every gherkin step, if there is any block of code to be executed,
+that block of code should be written as part of the BeforeStep annotation
+
+@AfterStep:
+-----------
+==> After Executing every gherkin step, if there is any block of code to be executed,
+that block of code should be written as part of the AfterStep annotation
+Example: Screenshot capturing after every gherkin step
+
+
+
+
+
+
+
+
+
+
+
+
