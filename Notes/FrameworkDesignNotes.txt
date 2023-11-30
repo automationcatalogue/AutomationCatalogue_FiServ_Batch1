@@ -1,0 +1,53 @@
+GIT Hub Location:
+-----------------
+https://github.com/automationcatalogue/TestAutomationCatalogue_Batch41
+
+Framework:
+----------
+==> Organized code/Reusable code
+
+Different Types of Frameworks w.r.t Java and Selenium:
+-------------------------------------------------------
+POM, DataDriven, KeywordDriven, Robot, Karate, Hybrid, Modular, etc.,
+
+==>POM (Page Object Model) design pattern:
+------------------------------------------
+==> Functionalities of the Application is going to divide based on webpages
+==> OrangeHRM Application : LoginPage, HomePage, AdministrationPage, EmployeeManagementPage, Leave Page etc.,
+==> DemoWebShop Application: LoginPage, HomePage, ProductCatalogue Page, ShoppingCart Page, Checkout Page, Orders Page etc.,
+
+
+==> Steps to Develop the framework from scratch:
+------------------------------------------------
+1. Decide the Design Pattern ==>  This decision in general will be taken based on application functionalities
+2. Choose/select the tools based on Design Pattern
+	a) Programming Lanaguge
+	b) UI Automation/API Automation/Mobile Application
+		(Selenium/Rest Assured API/Appium)
+	c) TDD/BDD approach --> TestNG/Cucumber
+	d) TestData maintenance --> Excel file/Json file/XML file etc.,
+	e) Reporting --> Log files & Reports --> Log4J & TestNG Reports, Cucumber Report, Maven Reports, Allure Reports, Extent Reports
+	f) Build tools --> Maven/ Gradle/ Ant etc.,
+	g) SCM --> GIT Hub, Git Lab, Bitbucket, SVN etc.,
+	h) CICD Pipeline --> Jenkins, GitLab, AzureDeveops, Teamcity etc.,
+	
+3) Framework Architecture/Folder structure
+4) Definite the Process/strategy to develop the automation testcases
+5) Develop the Utitlities (Reusable methods) for all the components
+6) Develop the testcases and organize your code according to the design pattern
+7) Execute the testcases either in local machine/remote machine
+8) Share the Reports to your management team and stakeholders
+
+
+Typical Folder Structure of POM/Framework Architecture:
+-------------------------------------------------------
+
+	src  --> (SourceCode)
+		
+		main --> (All the Business Logic/Core Logic) 
+			Pages
+			Utilities
+			Config
+			
+		test --> (All the code of testcases)
+			Actual Testcases code
